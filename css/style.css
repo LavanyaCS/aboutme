@@ -1,7 +1,22 @@
+/* =========================================================
+   LAVANYA CHANDRAN – PORTFOLIO STYLESHEET
+   UI / Full Stack Development | SEO | Digital Marketing
+   ========================================================= */
+
 * {
   font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  color: #212529;
+  overflow-x: hidden;
+}
 
 .section-title {
   font-size: 2rem;
@@ -17,8 +32,7 @@
   display: block;
   width: 10rem;
   height: 0.0625rem;
-  background:
-    color-mix(in srgb, #212529e8, transparent 60%);
+  background: color-mix(in srgb, #212529e8, transparent 60%);
   left: 0;
   right: 0;
   bottom: 0.0625rem;
@@ -52,9 +66,14 @@
   background-color: #afb3b7 !important;
 }
 
+.navbar {
+  z-index: 1030;
+}
+
 .navbar-nav .nav-link {
   font-weight: normal;
   opacity: 0.85;
+  transition: opacity 0.25s ease;
 }
 
 .navbar-nav .nav-link:hover,
@@ -64,8 +83,6 @@
 
 /* Hero Section */
 #hero {
-  /* background: linear-gradient(-45deg, #343a40, #495057, #313131, #343a40); */
-  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
   background: linear-gradient(135deg, #2c2c2c, #1e1e1e);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
@@ -77,31 +94,23 @@
   align-items: center;
 }
 
-/* Animate Background */
+/* Animated background */
 @keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Carousel Fullscreen */
+/* Full-screen carousel */
 #portfolioCarousel,
-.carousel-inner,
-.carousel-item {
-  height: 100vh;
+#portfolioCarousel .carousel-inner,
+#portfolioCarousel .carousel-item {
+  min-height: 100vh;
   width: 100%;
 }
 
-.carousel-item .container-fluid {
-  height: 100%;
+#portfolioCarousel .carousel-item .container-fluid {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,14 +122,16 @@
   z-index: 2;
 }
 
-/* Image Styling */
+/* Hero and carousel images */
 .carousel img {
   max-width: 18.75rem;
+  width: 100%;
+  height: auto;
   border-radius: 50%;
-  box-shadow: 0rem 0.625rem 1.25rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.5);
+  object-fit: cover;
 }
 
-/* Button Styling */
 .btn-outline-light:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
@@ -130,9 +141,10 @@
   width: fit-content;
 }
 
+/* About section */
 #about .about-img {
   animation: profile_animate 8s ease-in-out 1s infinite;
-  background-image: url(../images/aboutme.jpg);
+  background-image: url("../images/aboutme.jpg");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -140,26 +152,26 @@
   filter: grayscale(100%);
   height: 18rem;
   width: 18rem;
+  max-width: 100%;
   justify-self: center;
   align-self: center;
+  margin: 0 auto;
 }
 
 @keyframes profile_animate {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 40% 70% 20% 50% / 40% 50% 70% 70%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
 
-  25% {
-    border-radius: 40% 70% 20% 50% / 40% 50% 70% 70%;
-  }
+/* General card polish */
+.card {
+  overflow-wrap: anywhere;
+}
 
-  50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-  }
-
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
+.card img {
+  object-fit: cover;
 }
 
 /* Projects */
@@ -167,24 +179,31 @@
   position: relative;
   cursor: pointer;
   height: 15rem;
+  overflow: hidden;
+}
+
+#projects .project-item > img {
+  width: 100%;
+  object-fit: cover;
 }
 
 #projects .project-item .card-menu {
   display: none;
 }
 
-#projects .project-item:hover .card-menu {
+#projects .project-item:hover .card-menu,
+#projects .project-item:focus-within .card-menu {
   display: flex;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.58);
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0%;
-  left: 0%;
+  top: 0;
+  left: 0;
   color: white;
 }
 
-/*Qualifications */
+/* Qualifications */
 #qualifications .card-align {
   top: -0.75rem !important;
 }
@@ -202,20 +221,17 @@
 
 #qualifications .nav-pills .nav-link {
   color: #35383cd9 !important;
-  border-radius: 0rem;
   background-color: #fff !important;
-  border: 0rem solid #000;
+  border: 0;
   text-align: center;
-  gap: 1rem;
-  border-radius: 6.25rem !important;
   margin: 0.5rem !important;
   padding: 0.5rem 1.5rem;
-
+  border-radius: 6.25rem !important;
 }
 
 #qualifications .timeline {
   position: relative;
-  margin: 0rem auto;
+  margin: 0 auto;
   padding: 0.3125rem 0;
   width: 100%;
   max-width: 56.25rem;
@@ -226,7 +242,7 @@
   position: absolute;
   left: 50%;
   top: 3.125rem;
-  bottom: 0rem;
+  bottom: 0;
   width: 0.125rem;
   background: #000;
   transform: translateX(-50%);
@@ -249,7 +265,6 @@
   z-index: 1;
 }
 
-/* Left side */
 #qualifications .timeline-item.left {
   left: 0;
   text-align: right;
@@ -259,7 +274,6 @@
   right: -0.5rem;
 }
 
-/* Right side */
 #qualifications .timeline-item.right {
   left: 50%;
   text-align: left;
@@ -291,23 +305,19 @@
   color: #888;
 }
 
-
-/*Skills*/
+/* Skills */
 #skills .card {
-  height: 22rem;
+  min-height: 22rem;
   display: flex;
   flex-direction: column;
 }
 
 #skills .skill-icon {
-
   margin-right: 0.25rem;
   color: #000;
-  /* color: #0d6efd; */
 }
 
 #skills .progress-bar {
-
   border-radius: 0.625rem;
 }
 
@@ -316,10 +326,8 @@
   border: 1px solid #afb3b7 !important;
 }
 
-/*--------------------------------------------------------------
-# Contact Section
---------------------------------------------------------------*/
-.contact .info-item+.info-item {
+/* Contact */
+.contact .info-item + .info-item {
   margin-top: 2.5rem;
 }
 
@@ -356,59 +364,116 @@
 .social-links .info-item:hover i,
 .contact .info-item:hover i {
   background: #212529e8;
-  color: #ffffff;
+  color: #fff;
 }
 
 .contact .contact-form {
   height: 100%;
 }
 
-.contact .contact-form input[type=text],
-.contact .contact-form input[type=email],
-.contact .contact-form input[type=tel],
+.contact .contact-form input[type="text"],
+.contact .contact-form input[type="email"],
+.contact .contact-form input[type="tel"],
 .contact .contact-form textarea {
   font-size: 0.875rem;
   padding: 0.625rem 1rem;
   box-shadow: none;
   border-radius: 0;
   color: #212529e8;
-  background-color: color-mix(in srgb, #ffffff, transparent 50%);
+  background-color: color-mix(in srgb, #fff, transparent 50%);
   border-color: color-mix(in srgb, #212529e8, transparent 80%);
 }
 
-.contact .contact-form input[type=text]:focus,
-.contact .contact-form input[type=email]:focus,
-.contact .contact-form input[type=tel]:focus,
+.contact .contact-form input[type="text"]:focus,
+.contact .contact-form input[type="email"]:focus,
+.contact .contact-form input[type="tel"]:focus,
 .contact .contact-form textarea:focus {
   border-color: #212529e8;
 }
 
-.contact .contact-form input[type=text]::placeholder,
-.contact .contact-form input[type=email]::placeholder,
-.contact .contact-form input[type=tel]::placeholder,
+.contact .contact-form input[type="text"]::placeholder,
+.contact .contact-form input[type="email"]::placeholder,
+.contact .contact-form input[type="tel"]::placeholder,
 .contact .contact-form textarea::placeholder {
   color: color-mix(in srgb, #212529e8, transparent 70%);
 }
 
-.contact .contact-form button[type=submit] {
-  color: #ffffff;
+.contact .contact-form button[type="submit"] {
+  color: #fff;
   background: #212529e8;
   border: 0;
   padding: 0.625rem 1.875rem;
   transition: 0.4s;
-  border-radius: 3.1250rem;
+  border-radius: 3.125rem;
 }
 
-.contact .contact-form button[type=submit]:hover {
+.contact .contact-form button[type="submit"]:hover {
   background: color-mix(in srgb, #212529e8, transparent 25%);
 }
 
-/* Responsive: Stack vertically on small screens */
-@media (max-width: 768px) {
+/* Digital Marketing & SEO */
+#digital-marketing .card {
+  height: 100%;
+  border-radius: 0.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-  /*Skills*/
+#digital-marketing .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.10) !important;
+}
+
+#digital-marketing .card i {
+  color: #212529e8;
+}
+
+#digital-marketing .card h5 {
+  line-height: 1.4;
+}
+
+#digital-marketing p {
+  line-height: 1.7;
+}
+
+#digital-marketing .digital-project-image {
+  display: block;
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  object-position: top center;
+  background: #f1f3f5;
+}
+
+#digital-marketing .badge {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Footer */
+footer a {
+  transition: opacity 0.2s ease;
+}
+
+footer a:hover {
+  opacity: 0.75;
+}
+
+/* Accessibility: reduce motion when requested */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Tablet and mobile */
+@media (max-width: 768px) {
   #skills .card {
-    height: 25rem;
+    min-height: 25rem;
   }
 
   #qualifications .timeline::before {
@@ -418,6 +483,7 @@
   #qualifications .timeline-item {
     width: 100%;
     padding-left: 3.125rem;
+    padding-right: 0.75rem;
     text-align: left !important;
   }
 
@@ -428,13 +494,57 @@
 
   #qualifications .timeline-item::before {
     left: 1rem !important;
+    right: auto !important;
+  }
+
+  #portfolioCarousel .carousel-item .container-fluid {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  #hero,
+  #portfolioCarousel,
+  #portfolioCarousel .carousel-inner,
+  #portfolioCarousel .carousel-item,
+  #portfolioCarousel .carousel-item .container-fluid {
+    min-height: 100vh;
+    height: auto;
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.65rem;
+  }
+
   .navbar {
     min-height: 3.5rem;
     background: #212529e8;
   }
 
+  #hero .col-12.p-5 {
+    padding: 5rem 1.25rem 2rem !important;
+  }
+
+  #hero h1 {
+    font-size: 2.15rem;
+  }
+
+  #about .about-img {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  #digital-marketing .digital-project-image {
+    height: 12rem;
+  }
+
+  #digital-marketing .btn {
+    width: 100%;
+  }
+
+  #qualifications .nav-pills .nav-link {
+    margin: 0.25rem !important;
+    padding: 0.45rem 0.85rem;
+  }
 }
